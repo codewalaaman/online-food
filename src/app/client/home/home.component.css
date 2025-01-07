@@ -1,0 +1,430 @@
+/* Ensure the image is responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Adjust the spacing and layout for product cards */
+.food-item-col {
+  display: flex;
+  justify-content: center; /* Center content */
+  align-items: stretch; /* Ensure full height alignment */
+}
+.rounded-custom {
+  border-radius: 20px; /* Adjust for a small border radius */
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.rounded-custom:hover {
+  transform: translateY(-5px); /* Move the button slightly up on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
+
+
+/* Container for the icon */
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 90vw;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.btn-sm{
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+}
+/* Styling for the icon */
+.icon-container img {
+  /* filter: drop-shadow(-10px -10px 20px #ddd); */
+  position: absolute;
+  font-size: 4rem;
+  color: #111111;
+  height: 100px;
+  width: 200px;
+  animation: moveIcon 3s linear infinite;
+}
+
+/* Keyframes for the animation */
+@keyframes moveIcon {
+  0% {
+    transform: translateX(200%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Adjust the card for food items */
+.card {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: transparent;
+  margin-bottom: 1rem; /* Reduced margin between cards */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.food-card {
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: space-between;
+
+}
+
+/* Hover effect for card (if needed) */
+/* .card:hover {
+  transform: scale(0.95);
+} */
+
+/* Style for buttons */
+.btn-primary {
+  background-color: #ff6600;
+  border-color: none;
+
+}
+
+.btn-primary:hover {
+  background-color: #e65c00;
+
+  border-color: none;
+}
+
+.btn-outline-secondary {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+}
+
+.btn-custom {
+  background-color: #ff6600;
+  border: none;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-custom i {
+  font-size: 1.0rem;
+  color: white;
+}
+
+.btn-add-to-cart {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+/* Increased Delivery Boy Image Size */
+.delivery-man-img {
+  border-radius: 12px;
+  filter: drop-shadow(5px 5px 5px #111111) drop-shadow(-10px -10px 20px #ddd);
+  max-width: 60%;
+  height: auto;
+  display: block;
+}
+
+/* Card Body Adjustments */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adjusted to ensure content is spaced evenly */
+  height: 100%;
+  padding: 1rem; /* Adjust padding for tighter content */
+}
+
+/* Card Image Adjustments */
+.card-img-top {
+  height: 200px; /* Adjust height */
+  object-fit: cover; /* Ensure image covers specified height */
+}
+
+.card img {
+  height: 20vh;
+  object-fit: cover;
+}
+
+/* Font Sizes for Text */
+.card-body .card-title,
+.card-body .card-text,
+.card-body .card-price {
+  font-size: small;
+}
+
+button.ibtn {
+  color: #FF9900;
+  background: transparent;
+  padding: 4px 22px;
+  border: 1px solid #FF9900;
+  border-radius: 3px;
+  position: relative;
+  font-weight: 400;
+}
+button.ibtn:hover{
+  color: #fee;
+  background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+  border: none;
+  padding: 4px 22px;
+  border: 0px solid #FF9900;
+  border-radius: 3px;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.id-button{
+  padding: 6px 10px;
+  background-color: rgba(189, 189, 189, 0.168);
+  color: rgb(0, 0, 0);
+  border: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin-left: 3px;
+}
+
+/* Button Sizes Based on Screen Size */
+@media (max-width: 900px) {
+  .card-body .btn {
+    padding: 1px 4px; /* Adjust button size */
+    width: 5px;
+  }
+}
+
+/* Inline Layout for Icons */
+.inline-layout {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #111111, -10px -10px 20px #dddddd;
+  backdrop-filter: blur(30px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.icon-style {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+/* Media Queries for Different Screen Sizes */
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .inline-layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .icon-style {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+
+  .row {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-item {
+    min-width: 120px;
+  }
+
+  .menu-item img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-item img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .fa-arrow-left, .fa-arrow-right {
+    font-size: 18px;
+  }
+
+  button.ibtn {
+    color: #FF9900;
+    background: transparent;
+    padding: 2px 10px;
+    border: 1px solid #FF9900;
+    border-radius: 2px;
+    position: relative;
+    font-weight: 400;
+  }
+  button.ibtn:hover{
+    color: #fee;
+    background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+    border: none;
+    padding: 2px 11px;
+    border: 0px solid #FF9900;
+    border-radius: 2px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  
+  .id-button{
+    padding: 3px 5px;
+    background-color: rgba(189, 189, 189, 0.168);
+    color: rgb(0, 0, 0);
+    border: none;
+    border: 1px solid gray;
+    border-radius: 2px;
+    margin-left: 2px;
+  }
+}
+
+/* Main Menu Bar Styling */
+.mainmenubar {
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.mainmenubar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome */
+}
+
+.menu-item {
+  min-width: 160px;
+  margin: 0 10px; /* Adjusted margin */
+}
+
+.menu-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item img:hover {
+  transform: scale(1.1);
+}
+
+.menu-arrow i:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  opacity: 1; /* Ensure visibility on hover */
+}
+
+/* Discount Label */
+.discount-label {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.875rem; /* Adjust font size if needed */
+}
+
+/* Quantity Control Buttons */
+/* Ensure the quantity controls container is responsive */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center buttons horizontally */
+  border: 1px solid #ddd; /* Border for the box */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow to keep buttons inside */
+}
+
+/* Style for each button */
+.quantity-controls button {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 0; /* No rounded corners for buttons */
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 40px; /* Fixed width for consistency */
+  height: 40px; /* Fixed height for consistency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for the decrement button */
+.quantity-controls .decrement {
+  border-radius: 0 0 0 5px; /* Rounded corner on the bottom-left */
+}
+
+/* Style for the increment button */
+.quantity-controls .increment {
+  border-radius: 0 0 5px 0; /* Rounded corner on the bottom-right */
+}
+
+/* Hover effect for buttons */
+.quantity-controls button:hover {
+  background-color: #e2e6ea;
+}
+
+/* Ensure the quantity value is centered and styled */
+.quantity-controls .quantity-value {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Fixed width for consistency */
+  height: 40px; /* Fixed height for consistency */
+}
+
+
+
+
+.smallcreen{
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 375px) {
+  .card-main {
+    flex: 0 0 100%; /* Make the card take full width */
+    max-width: 100%;
+    max-height: 50% !important;
+  }
+
+  .card {
+    margin-bottom: 1rem; /* Add space between cards */
+  }
+
+  .card-img-top {
+    height: 28vh !important; 
+    max-width: 100%;
+    object-fit: cover; /* Fit image within card without distortion */
+  }
+
+  .quantity-control button {
+    padding: 0.25rem 0.5rem; /* Adjust button size */
+  }
+
+  .price {
+    font-size: 0.9rem; /* Adjust font size */
+  }
+
+  .btn {
+    font-size: 0.875rem; /* Adjust button font size */
+  }
+  .btn-add-to-cart{
+    padding: 4px 4px !important;
+    width:100px !important;
+  }
+}
+

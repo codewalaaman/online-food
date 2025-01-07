@@ -1,0 +1,98 @@
+<div class="container-fluid  py-5 reservation-container">
+    <div class="row justify-content-center h-100">
+      <!-- Selected Restaurant Column -->
+      <div class="col-lg-8 col-md-7 px-0 mb-3">
+        <div class="card border-0 h-100">
+          <div class="card-body text-center">
+            <h2 class="card-title mb-4 justify-content-evenly">
+              Selected Restaurant</h2>
+            <div >
+              <img 
+                [src]="restaurant.image" 
+                alt="Selected Restaurant Image" 
+                class="img-fluid rounded mb-4 restaurant-image"
+              />
+              <div class="restaurant-details d-flex align-items-center justify-content-between">
+
+              <div class="restaurant-info">
+                <h5 class="restaurant-name">{{ restaurant.name }}</h5>
+                <p class="card-text text-muted">{{ restaurant.location }}</p>
+                <p class="card-text font-weight-bold">{{ restaurant.price }} for 2</p>
+              </div>
+              <span class="badge badge-success restaurant-rating">{{ restaurant.rating }}</span>
+              </div>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-outline-primary" (click)="goBack()">Go Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Booking Form Column -->
+      <div class="col-lg-4 col-md-5 px-0">
+        <div class="card shadow-lg border-0 h-80 reservation-form-card">
+          <div class="card-body form-card-body p-5">
+            <h4 class="card-title text-center mb-4">Book a Table</h4>
+            <form [formGroup]="reservationForm" (ngSubmit)="reservationFormSubmit()">
+              <!-- Form Inputs here -->
+              <!-- Name -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-control" formControlName="name" />
+                <div class="invalid-feedback" *ngIf="reservationForm.get('name').invalid && reservationForm.get('name').touched">
+                  Name is required.
+                </div>
+              </div>
+  
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" formControlName="email" />
+                <div class="invalid-feedback" *ngIf="reservationForm.get('email').invalid && reservationForm.get('email').touched">
+                  A valid email is required.
+                </div>
+              </div>
+  
+              <!-- Phone -->
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" formControlName="phone" />
+                <div class="invalid-feedback" *ngIf="reservationForm.get('phone').invalid && reservationForm.get('phone').touched">
+                  A valid phone number is required.
+                </div>
+              </div>
+  
+              <!-- Date & Time -->
+              <div class="mb-3">
+                <label for="datetime" class="form-label">Reservation Date & Time</label>
+                <input type="datetime-local" id="datetime" class="form-control" formControlName="datetime" />
+                <div class="invalid-feedback" *ngIf="reservationForm.get('datetime').invalid && reservationForm.get('datetime').touched">
+                  Date and time are required.
+                </div>
+              </div>
+  
+              <!-- Guests -->
+              <div class="mb-3">
+                <label for="guests" class="form-label">Number of Guests</label>
+                <input type="number" id="guests" class="form-control" formControlName="guests" />
+                <div class="invalid-feedback" *ngIf="reservationForm.get('guests').invalid && reservationForm.get('guests').touched">
+                  Number of guests is required and must be at least 1.
+                </div>
+              </div>
+  
+              <!-- Special Requests -->
+              <div class="mb-3">
+                <label for="requests" class="form-label">Special Requests</label>
+                <textarea id="requests" class="form-control" rows="3" formControlName="requests"></textarea>
+              </div>
+  
+              <!-- Submit -->
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="reservationForm.invalid">Make Reservation</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

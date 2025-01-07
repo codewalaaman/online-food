@@ -1,0 +1,135 @@
+.food-card {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: space-between;
+
+  }
+  
+  .food-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .food-card-body {
+    padding: 1rem;
+  }
+  .card-button{
+    margin-bottom: 1px;
+    align-items: flex-end;
+
+  }
+  
+  .btn-add-to-cart {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-add-to-cart:hover {
+    background-color: #e65c00;
+  }
+  
+  .filter-btn {
+    margin-right: 1rem;
+  }
+  .admindropdown{
+    cursor: pointer;
+    background-color: black;
+    display: block;
+    color: white;
+    z-index: 2px;
+  }
+  .dropdown-item{
+    color: #ff6600;
+
+  }
+  /* Custom Dropdown Styling */
+
+  .dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    z-index: 1050;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 2.5rem; /* Adjust this as needed */
+    right: 0;
+    min-width: 10rem;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .dropdown-menu li {
+    padding: 0.5rem 1rem;
+  }
+  
+  .dropdown-menu li a {
+    display: block;
+    width: 100%;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .dropdown-menu li a:hover {
+    background-color: #f8f9fa;
+    color: #000;
+  }
+  .food-card-body .card-title{
+    margin-top:0px;
+    font-size: small;
+  }
+  .food-card-body .card-text{
+    font-size: small;  
+  }
+  .food-card-body .card-price{
+    font-size: small;
+  }
+   @media screen and(max-width:768px){
+    .food-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+    .food-card{
+      height: 100px;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 55%;
+    }
+   }
+   /* Ensures dropdown aligns correctly with buttons */
+.dropdown {
+  margin-left: 10px; /* Adjust as needed */
+}
+
+.btn-outline-primary {
+  white-space: nowrap; /* Prevents wrapping of text */
+}

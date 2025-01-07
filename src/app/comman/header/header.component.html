@@ -1,0 +1,212 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="row yourlogo ">
+    <div class="col">
+      <a class="navbar-brand" href="#">YourBrand</a>
+    </div>
+  </div>
+  <!-- Search Bar -->
+  <div
+    class="col-2 search-bar-container col-md-6 col-lg-6 d-lg-flex mx-0 my-3"
+  >
+    <input
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+    />
+    <i class="fas fa-search" (click)="onSearch()"></i>
+  </div>
+
+  <!-- Navbar Toggler for Mobile View -->
+  <div class="justify-content-end d-flex">
+    <button
+      class="navbar-toggler"
+      style="outline-color: none; border: none; margin-right: 5px"
+      type="button"
+      *ngIf="global.isLoggedIn"
+      data-bs-toggle="offcanvas"
+      aria-controls="offcanvasExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <!-- <li class="nav-item d-flex align-items-center" *ngIf="global.isLoggedIn"> -->
+      <a
+        class="nav-link profile d-inline float-end"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        role="button"
+        aria-controls="offcanvasExample"
+      >
+        <i
+          class="fas fa-user"
+          style="
+            color: black;
+            font-size: 1rem;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            padding: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          "
+        ></i>
+      </a>
+    </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="toggleNavbar()"
+      aria-controls="navbarNav"
+      [attr.aria-expanded]="this.global.isNavbarOpen ? 'true' : 'false'"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <div
+    class="collapse navbar-collapse"
+    id="navbarNav"
+    [ngClass]="{
+      'navbar-bg': global.isNavbarOpen,
+      'navbar-text-icon-color': global.isNavbarOpen
+    }"
+    [class.show]="this.global.isNavbarOpen"
+  >
+    <ul class="navbar-nav nav-links mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/home"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/menu"
+          >Menu</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/reservation"
+          >Reservation</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/contact"
+          >Help</a
+        >
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/cart"
+          ><i class="fas fa-shopping-bag"></i
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="!global.isLoggedIn"
+          routerLinkActive="active"
+          routerLink="/login"
+          >Login</a
+        >
+      </li>
+      <li
+        class="nav-item d-none d-lg-flex align-items-center"
+        *ngIf="global.isLoggedIn"
+        aria-expanded="true"
+      >
+        <a
+          class="nav-link profile d-inline"
+          data-bs-toggle="offcanvas"
+          href="#offcanvasExample"
+          role="button"
+          aria-controls="offcanvasExample"
+          >{{ global.username }}
+          <i
+            class="fas fa-user"
+            style="
+              color: black;
+              font-size: 1.25rem;
+              background-color: #f0f0f0;
+              border-radius: 50%;
+              padding: 0.5rem;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            "
+          ></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- Offcanvas Modal -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header justify-content-center">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Profile</h5>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Profile Banner -->
+    <!-- <div class="profile-banner text-center">
+      <img src="assets/profile-banner.jpg" alt="Profile Banner" class="img-fluid rounded">
+    </div> -->
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <!-- Profile Section -->
+    <div class="profile-section text-center">
+      <img
+        src="assets/profileimage.png"
+        alt="User Profile Image"
+        class="profile-img rounded-circle"
+      />
+      <h5 class="mt-3">{{ global.username }}</h5>
+      <p class="text-muted">{{ global.userEmail }}</p>
+      <div class="d-flex justify-content-center mt-3">
+        <span class="badge bg-primary me-2">Gold Member</span>
+        <!-- Badge for user status -->
+      </div>
+    </div>
+
+    <!-- Welcome Message -->
+    <div class="text-center mt-3">
+      <p class="text-muted">
+        Welcome back, {{ global.username }}! Check out your latest orders and
+        update your settings.
+      </p>
+    </div>
+
+    <!-- Order History and Notifications -->
+    <div class="text-center mt-3">
+      <a class="btn btn-outline-primary w-100 mb-2" (click)="showorderHistory()"
+        >Order History
+      </a>
+      <div *ngIf="this.global.showorderHistory">
+        <ul *ngFor="let items of this.global.orderList">
+          <li>Order Id : {{ items._id }}</li>
+        </ul>
+      </div>
+      <a class="btn btn-outline-secondary w-100 mb-2">Notifications</a>
+      <!-- <a class="btn btn-outline-secondary w-100 mb-2 " data-bs-toggle="reservation" aria-controls="reservationLabel" >Reserved List</a> -->
+    </div>
+
+    <!-- Actions -->
+    <hr />
+    <div class="actions d-flex justify-content-around">
+      <button
+        *ngIf="global.isLoggedIn"
+        type="button"
+        class="btn btn-danger"
+        data-bs-dismiss="offcanvas"
+        (click)="onLogout()"
+      >
+        Logout
+      </button>
+      <button type="button" class="btn btn-info">Change Password</button>
+    </div>
+
+    <!-- Optional Change Password Button -->
+    <div class="text-center mt-3"></div>
+  </div>
+</div>

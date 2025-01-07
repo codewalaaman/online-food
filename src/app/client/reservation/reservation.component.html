@@ -1,0 +1,207 @@
+<!-- <div class="container mt-0 mb-3">
+    <h1 class="text-center mt-4 mb-4">Reserve Your Table</h1>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg border-light">
+          <div class="card-body p-4">
+            <h4 class="card-title text-center mb-4">Book a Table</h4>
+            
+            <form [formGroup]="reservationForm" (ngSubmit)="reservationFormSubmit()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" id="name" class="form-control" formControlName="name">
+                  <div class="invalid-feedback" *ngIf="reservationForm.get('name').invalid && reservationForm.get('name').touched">
+                    Name is required.
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" id="email" class="form-control" formControlName="email">
+                  <div class="invalid-feedback" *ngIf="reservationForm.get('email').invalid && reservationForm.get('email').touched">
+                    A valid email is required.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" class="form-control" formControlName="phone">
+                  <div class="invalid-feedback" *ngIf="reservationForm.get('phone').invalid && reservationForm.get('phone').touched">
+                    A valid phone number is required.
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="datetime" class="form-label">Reservation Date & Time</label>
+                  <input type="datetime-local" id="datetime" class="form-control" formControlName="datetime">
+                  <div class="invalid-feedback" *ngIf="reservationForm.get('datetime').invalid && reservationForm.get('datetime').touched">
+                    Date and time are required.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="guests" class="form-label">Number of Guests</label>
+                  <input type="number" id="guests" class="form-control" formControlName="guests">
+                  <div class="invalid-feedback" *ngIf="reservationForm.get('guests').invalid && reservationForm.get('guests').touched">
+                    Number of guests is required and must be at least 1.
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="requests" class="form-label">Special Requests</label>
+                  <textarea id="requests" class="form-control" rows="3" formControlName="requests"></textarea>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="reservationForm.invalid">Make Reservation</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+   -->
+   <!-- <div class="container-fluid mt-4">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="input-group">
+          <select class="form-control col-md-2">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+          </select>
+          <input type="text" class="form-control" placeholder="Search for Restaurants, Offers, Deals or Events..." />
+          <div class="input-group-append">
+            <button class="btn btn-danger" type="button">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Quick Filters</h5>
+        <ul class="list-group mb-3">
+          <li class="list-group-item"><input type="checkbox" /> Dineout Pay</li>
+          <li class="list-group-item"><input type="checkbox" /> Pure Veg</li>
+          <li class="list-group-item"><input type="checkbox" /> 5 Star</li>
+          <li class="list-group-item"><input type="checkbox" /> Buffet</li>
+        </ul>
+  
+        <h5>Cuisines</h5>
+        <ul class="list-group">
+          <li class="list-group-item">North Indian</li>
+          <li class="list-group-item">Fast Food</li>
+          <li class="list-group-item">Chinese</li>
+          <li class="list-group-item">Beverages</li>
+        </ul>
+      </div>
+  
+      <div class="col-md-9">
+        <h4>Best Restaurants Near Me in Delhi</h4>
+        <div class="row">
+          <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurants">
+            <div class="card">
+              <img class="card-img-top" [src]="restaurant.image" alt="Restaurant image">
+              <div class="card-body">
+                <h5 class="card-title">{{ restaurant.name }}</h5>
+                <p class="card-text">{{ restaurant.location }}</p>
+                <p class="card-text">{{ restaurant.price }} for 2</p>
+                <span class="badge badge-success">{{ restaurant.rating }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container-fluid ">
+    <!-- Search Bar -->
+    <div class="row mb-4">
+      <div class="col-md-12 mt-3">
+        <div class="input-group">
+          <select class="form-control col-md-2" [(ngModel)]="selectedCity" (change)="filterRestaurants()">
+            <option value="">Select City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+          </select>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="searchQuery"
+            placeholder="Search for Restaurants, Offers, Deals or Events..."
+            (input)="filterRestaurants()"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-danger" type="button" (click)="filterRestaurants()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  
+    <!-- Main Content -->
+    <div class="row">
+      <!-- Filters Section -->
+      <div class="col-md-3">
+        <!-- Quick Filters -->
+        <h5>Quick Filters</h5>
+        <ul class="list-group mb-3">
+          <li class="list-group-item">
+            <input type="checkbox" [(ngModel)]="filterOptions.dineoutPay" (change)="filterRestaurants()" /> Dineout Pay
+          </li>
+          <li class="list-group-item">
+            <input type="checkbox" [(ngModel)]="filterOptions.pureVeg" (change)="filterRestaurants()" /> Pure Veg
+          </li>
+          <li class="list-group-item">
+            <input type="checkbox" [(ngModel)]="filterOptions.fiveStar" (change)="filterRestaurants()" /> 5 Star
+          </li>
+          <li class="list-group-item">
+            <input type="checkbox" [(ngModel)]="filterOptions.buffet" (change)="filterRestaurants()" /> Buffet
+          </li>
+        </ul>
+  
+        <!-- Cuisines -->
+        <h5>Cuisines</h5>
+        <ul class="list-group">
+          <li class="list-group-item">North Indian</li>
+          <li class="list-group-item">Fast Food</li>
+          <li class="list-group-item">Chinese</li>
+          <li class="list-group-item">Beverages</li>
+        </ul>
+      </div>
+  
+      <!-- Restaurant Cards Section -->
+      <div class="col-md-9">
+        <h4>Best Restaurants Near Me in {{ selectedCity || 'your area' }}</h4>
+        <div class="row">
+          <div class="col-md-4 mb-4" *ngFor="let restaurant of filteredRestaurants">
+            <div class="card">
+              <img class="card-img-top" [src]="restaurant.image" (click)="onImageClick(restaurant)" alt="Restaurant image">
+              <div class="card-body">
+                <h5 class="card-title">{{ restaurant.name }}</h5>
+                <p class="card-text">{{ restaurant.location }}</p>
+                <p class="card-text">{{ restaurant.price }} for 2</p>
+                <span class="badge badge-success">{{ restaurant.rating }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="filteredRestaurants.length === 0" class="alert alert-info">
+          No restaurants found for the applied filters.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

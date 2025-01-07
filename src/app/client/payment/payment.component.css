@@ -1,0 +1,152 @@
+/* General container styling */
+.container {
+  padding: 0; /* Remove padding if needed */
+  margin-top: 50px;
+}
+
+/* Style the card */
+.card {
+  border-radius: 0; /* Remove border radius */
+  background-color: transparent; /* Remove background color */
+  border: 1px solid #e9ecef; /* Optional: Light border for visibility */
+  width: 50%; /* Default width for larger screens */
+  max-width: 800px; /* Optional: Set a maximum width for large screens */
+  margin: 0 auto; /* Center the card */
+}
+
+/* Style the card body */
+.card-body {
+  padding: 0; /* Remove padding to ensure full-width sections */
+  background: linear-gradient(to right, #ea4f28, #ad8186); /* Background gradient */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the card body fills the container and adjust layout */
+.card-body > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Full width */
+}
+
+/* Style headers */
+h1, .card-title {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin: 0; /* Remove margin for alignment */
+}
+
+/* Style form labels */
+.form-label {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Style form check inputs and labels */
+.form-check-input {
+  margin-right: 10px;
+}
+
+.form-check-label {
+  font-weight: 500;
+}
+
+/* Style the order summary */
+.order-summary {
+  width: 100%; /* Full width */
+  padding: 1.5rem; /* Adjust padding as needed */
+  background: #f8f9fa; /* Gray background */
+  box-sizing: border-box; /* Include padding in width */
+  margin-bottom: 0; /* No gap between sections */
+}
+
+/* Style the payment details */
+.payment-details {
+  width: 100%; /* Full width */
+  padding: 1.5rem; /* Adjust padding as needed */
+  background: #fff; /* White background */
+  box-sizing: border-box; /* Include padding in width */
+  margin-bottom: 0; /* No gap between sections */
+}
+
+/* Style payment details sections */
+.credit-card-details, .paypal-details, .net-banking-details, .upi-details {
+  border: 1px solid #ddd;
+  border-radius: 0; /* Remove border radius */
+  padding: 1rem;
+  background: #fff;
+  margin-bottom: 0; /* No gap between sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Different styles for each payment method */
+.credit-card-details {
+  background: linear-gradient(to right, #4a90e2, #0056b3);
+  color: #fff;
+}
+
+.paypal-details {
+  background: linear-gradient(to right, #ffb900, #f17c07);
+  color: #fff;
+}
+
+.net-banking-details {
+  background: linear-gradient(to right, #009688, #004d40);
+  color: #fff;
+}
+
+.upi-details {
+  background: linear-gradient(to right, #d9534f, #ada3a4);
+  color: #fff;
+}
+
+/* Style UPI options */
+.upi-options {
+  display: flex;
+  justify-content: space-around; /* Space items evenly */
+  align-items: center; /* Center items vertically */
+  gap: 1rem; /* Space between items */
+}
+
+.upi-option {
+  text-align: center;
+  flex: 1; /* Make each option flexible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none; /* Remove underline from links */
+  color: #fff; /* Text color */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.upi-option:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upi-icon, .upi-logo {
+  width: 60px; /* Set consistent size */
+  height: 60px; /* Maintain aspect ratio */
+  margin-bottom: 10px;
+}
+
+.upi-option span {
+  font-size: 1rem;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    width: 90%; /* Full width on small screens */
+    max-width: none; /* Remove max-width constraint */
+  }
+}

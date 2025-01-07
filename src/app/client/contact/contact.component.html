@@ -1,0 +1,89 @@
+<div class="container mt-5 mb-4">
+  <h1 class="text-center mb-4">Customer Support</h1>
+  <div class="row d-flex">
+      <!-- Left Side: Contact Information -->
+      <div class="col col-md-6 contact-info">
+          <h3>Contact Us</h3>
+          <div class="info-item">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                  <span>Address:</span>
+                  <h4>Gurugram, Haryana</h4>
+              </div>
+          </div>
+          <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                  <span>Phone:</span>
+                  <h4>+91 **********</h4>
+              </div>
+          </div>
+          <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                  <span>Email:</span>
+                  <h4>amanrpawar1210@gmail.com</h4>
+              </div>
+          </div>
+          <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                  <span>Hours:</span>
+                  <h4>Mon-Sun: 9 AM - 9 PM</h4>
+              </div>
+          </div>
+      </div>
+
+      <!-- Right Side: Contact Form -->
+      <div class="col-md-6">
+          <h3 class="mt-2 mb-2">Get In Touch</h3>
+          <form (ngSubmit)="submitContact()">
+              <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="contactForm.name" name="name" required>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" [(ngModel)]="contactForm.email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea class="form-control" id="message" rows="4" [(ngModel)]="contactForm.message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+      </div>
+  </div>
+
+  <!-- Additional Content Section -->
+  <div class="row mt-5">
+      <div class="col-md-12">
+          <h2 class="text-center">Frequently Asked Questions (FAQs)</h2>
+          <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+              <h5>
+                  <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#faq' + i" aria-expanded="false" aria-controls="faq">
+                      {{ faq.question }}
+                  </button>
+              </h5>
+              <div class="collapse" [attr.id]="'faq' + i">
+                  <div class="card card-body">
+                      {{ faq.answer }}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Social Media Links -->
+  <!-- <div class="row mt-5 text-center">
+      <div class="col-md-12">
+          <h2>Follow Us</h2>
+          <div class="social-icons">
+              <a href="#" class="mx-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="mx-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="mx-3"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+  </div> -->
+</div>

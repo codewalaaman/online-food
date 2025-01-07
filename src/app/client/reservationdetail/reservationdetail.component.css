@@ -1,0 +1,254 @@
+/* Updated container with responsive design */
+.reservation-container {
+    height: auto; /* Auto adjusts height */
+    padding: 0; /* No extra padding */
+    padding-bottom: 20px; /* Bottom padding for spacing */
+  /* background-color: rgba(204, 208, 120, 0.536); */
+
+}
+  
+
+/* Adjust the restaurant image to fit and be responsive */
+.restaurant-image {
+    width:95%; /* Ensure image takes full width */
+    height: 55vh; /* Maintain a 70% viewport height */
+    object-fit:cover; /* Cover entire area without distorting */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Remove card borders for a cleaner look */
+.card {
+    border: none; /* No borders */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Bold styling for headers */
+h2, h4 {
+    font-weight: bold;
+}
+
+/* Align both columns, ensuring no gaps */
+.col-md-8, .col-md-4 {
+    padding: 0; /* No padding between columns */
+}
+
+/* Remove padding inside card body */
+.card-body {
+    padding: 0px;
+}
+
+/* Button hover effect */
+.btn-outline-primary {
+    transition: all 0.3s ease;
+    border-radius: 30px; /* Add rounded corners */
+    padding: 10px 20px; /* Add some padding for better click area */
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Custom card shadow for booking form */
+.shadow-lg {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Badge for restaurant rating */
+.badge-success {
+    background-color: #4CAF50;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 20px; /* Add rounded corners */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reservation-container {
+        height: auto; /* Auto height for small screens */
+    }
+
+    .restaurant-image {
+        height: auto; /* Let the height adjust based on the image */
+        width: 100%; /* Full width */
+    }
+
+    .col-md-8, .col-md-4 {
+        padding: 0 10px; /* Add some padding on small screens */
+    }
+}
+
+/* Add subtle shadow for inputs and textareas */
+input, textarea {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+    width: 100%; /* Ensure inputs are full width */
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Form layout with padding for the booking form */
+.reservation-form-card .form-card-body {
+    padding: 20px; /* Add padding inside form */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Light shadow */
+}
+
+/* Make buttons larger and more responsive */
+.btn {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+}
+
+/* Adjusting input and form layout for small screens */
+@media (max-width: 576px) {
+    .reservation-form-card .form-card-body {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .btn {
+        font-size: 0.9rem; /* Adjust button size for smaller screens */
+    }
+}
+/* Styling for restaurant details */
+.restaurant-details h5 {
+    font-size: 1.75rem; /* Increase font size for restaurant name */
+    font-weight: bold;  /* Bold for emphasis */
+    margin-bottom: 10px; /* Add some spacing between name and location */
+}
+
+.restaurant-details p {
+    font-size: 1rem; /* Consistent text size for location and price */
+    margin: 0; /* Remove default margin */
+}
+
+.restaurant-details .text-muted {
+    color: #6c757d; /* Keep location text muted for contrast */
+    margin-bottom: 8px; /* Add slight spacing under location */
+}
+
+.restaurant-details .font-weight-bold {
+    color: #343a40; /* Make price text darker and bold */
+    margin-bottom: 12px; /* Add spacing under price */
+}
+
+/* Badge for rating */
+.restaurant-details .badge-success {
+    background-color: #4CAF50; /* Consistent with above badge */
+    font-size: 1rem; /* Slightly larger badge */
+    padding: 8px 12px; /* Add padding for a more defined badge */
+    border-radius: 20px; /* Rounded badge */
+}
+
+/* Add some spacing between restaurant name and other details */
+.restaurant-details {
+    margin-top: 20px; /* Top margin for spacing under image */
+    text-align: center; /* Center-align details */
+}
+
+@media (max-width: 768px) {
+    .restaurant-details h5 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .restaurant-details .badge-success {
+        font-size: 0.9rem; /* Adjust badge size for smaller screens */
+        padding: 6px 10px;
+    }
+}
+
+/* Restaurant Details Section */
+.restaurant-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 2rem; /* Spacing between image and details */
+    padding-right: 2rem;
+}
+
+.restaurant-info {
+    text-align: left;
+    margin: 0 5rem;
+}
+
+.restaurant-name {
+    font-size: 1.75rem; /* Increase font size for restaurant name */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 5px; /* Add space between name and location */
+}
+
+.card-text {
+    font-size: 1rem; /* Standard font size for location and price */
+    margin: 0; /* Remove extra margin */
+}
+
+.text-muted {
+    color: #6c757d; /* Keep location text muted */
+    margin-bottom: 8px; /* Space under location text */
+}
+
+.font-weight-bold {
+    color: #343a40; /* Darker color for price text */
+    margin-bottom: 12px; /* Space under price */
+}
+
+/* Badge for Rating */
+.restaurant-rating {
+    background-color: #4CAF50; /* Green background for rating */
+    font-size: 1rem; /* Font size for badge */
+    padding: 8px 12px; /* Padding for badge */
+    border-radius: 20px; /* Rounded edges */
+    display: inline-block;
+    align-self: flex-start; /* Align badge to the right */
+    margin:0  5rem;
+}
+
+/* Go Back Button Hover Effect */
+.btn-outline-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Custom card shadow for booking form */
+.shadow-lg {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .restaurant-details {
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .restaurant-info {
+        text-align: center;
+        margin-bottom: 10px !important;
+    }
+
+    .restaurant-rating {
+        align-self: center !important;
+    }
+
+    .restaurant-name {
+        font-size: 1.5rem;
+    }
+}
+  
+
+  .restaurant-details {
+    padding-top: 10px;
+  }
+  

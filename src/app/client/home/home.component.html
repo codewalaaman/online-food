@@ -1,0 +1,148 @@
+<div class="container my-5">
+
+  <div class="row align-items-center">
+   
+    
+    <!-- Left Side: Text and Button -->
+    <div class="col-12 col-md-4 text-center text-md-start">
+      <h2 class="display-4">Fastest Delivery & Easy Pickup</h2>
+      <p class="lead mt-4">Experience the best food delivery service.</p>
+      <button class="btn btn-lg mt-3 me-3 rounded-custom" style="background-color: #ff6600; color: white;" routerLink="/menu">
+        Get Started 
+        <i class="fas fa-arrow-right"></i>
+      </button>
+      <button class="btn btn-lg mt-3 ms-2 rounded-custom white-btn" style="background-color: white; color: black;" routerLink="/reservation">
+        Book A Table
+      </button>
+    </div>
+
+    <!-- Right Side: Delivery Boy Image -->
+    <div class="col-12 col-md-6 col-lg-6 text-center">
+      <img src="assets/file.png" alt="Delivery Boy" class="img-fluid delivery-man-img">
+    </div>
+
+    <!-- Info Icons -->
+    <div class="col-12 col-md-2 mt-3 " >
+      <div class="row mb-4">
+        <div class="d-flex align-items-center inline-layout" >
+          <i class="fas fa-bicycle icon-style"></i>
+          <div>
+            <h4 class="mb-1">Fast Delivery</h4>
+            <p class="mb-0">Promise to deliver within 30 mins</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="d-flex align-items-center inline-layout">
+          <i class="fas fa-shopping-basket icon-style"></i>
+          <div>
+            <h4 class="mb-1">Pick Up</h4>
+            <p class="mb-0">Pickup delivery at your doorstep</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="d-flex align-items-center inline-layout">
+          <i class="fas fa-utensils icon-style"></i>
+          <div>
+            <h4 class="mb-1">Dine In</h4>
+            <p class="mb-0">Enjoy your food fresh, crispy, and hot</p>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+  </div>
+
+  <div class= "row  icon-container">
+    <img src="assets/frontpagemenu/deliveryfront.png" class="deliveryfront" >
+    </div>
+  <div class="row mt-5">
+    <div class="row d-flex align-items-center mb-3 justify-content-between">
+    <div class="col-sm-10 col-lg-11 col-md-10">
+      <h2>What's on your mind?</h2>
+    </div>
+    <div class="col justify-content-evenly  float-end menu-arrow">
+      <span (click)="scrollLeft()"><i class="fas fa-arrow-left me-4" ></i></span>
+      <span (click)="scrollRight()"><i class="fas fa-arrow-right"></i></span>  
+
+    </div>
+    
+    </div>
+    <div class="row mainmenubar overflow-auto mb-3" id="menu-container">
+      <div class="d-flex flex-row">
+        <div class="menu-item flex-row align-items-center text-center" *ngFor="let item of this.menuItems" style="align-items: center;">
+          <div><img [src]="item.image" alt="Menu Item"  name="menuQuery" (click)="menuSearch(item.name)">
+               </div>
+          <div  (click)="menuSearch(item.name)">{{item.name}}</div>
+        </div>
+    </div>
+  </div>
+  <hr>
+  
+
+  <!-- Food Items Section -->
+  <div class="container">
+    <div class="row mt-5">
+      <!-- Header with Popular Food Items and Button -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Popular Food Items</h3>
+        <button class="btn btn-custom mb-0" routerLink="/menu">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+  
+      <!-- Product Card Loop -->
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 card-main justify-content-center" *ngFor="let product of products">
+        <div class="card h-100 position-relative">
+          <!-- Product Image & Discount Label -->
+          <div class="position-relative">
+            <img [src]="product.productImageUrl" class="card-img-top img-fluid" alt="Product Image">
+            <span *ngIf="product.discount" class="badge bg-danger discount-label position-absolute">-{{ product.discount }}%</span>
+          </div>
+  
+          <!-- Card Body -->
+          <div class="card-body d-flex flex-column">
+            <!-- Product Title -->
+            <h5 class="card-title">{{ product.productName }}</h5>
+            <!-- Product Description -->
+            <p class="card-text">{{ product.description }}</p>
+  
+            <!-- Ratings -->
+            <div class="ratings mb-2">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                <i class="fa" [ngClass]="i < product.rating ? 'fa-star' : 'fa-star-o'"></i>
+              </ng-container>
+              <span>({{ product.rating }})</span>
+            </div>
+  
+            <!-- Price & Quantity Control -->
+            <!-- <div class="d-flex justify-content-evenly align-items-center mt-auto">
+              <div  *ngIf="getQuantity(product.productId) > 0"class="quantity-control d-flex align-items-center">
+                <button class="id-button" (click)="decreaseQuantity(product.productId)">-</button>
+                <span class="mx-2">{{ getQuantity(product.productId) }}</span>
+                <button class="id-button" (click)="increaseQuantity(product)">+</button>
+              </div>
+              <span class="price">{{ product.productPrice | currency }}</span>   
+            </div> -->
+
+  
+            <!-- Add to Cart Button -->
+            <div class="d-flex justify-content-evenly smallcreen">
+              <button class = "ibtn" (click)="orderItem(product)">Add to Cart</button>
+              <span  *ngIf="getQuantity(product.productId) > 0"class="quantity-control d-flex align-items-center">
+                <button class="id-button" (click)="decreaseQuantity(product.productId)">-</button>
+                <span class="mx-2">{{ getQuantity(product.productId) }}</span>
+                <button class="id-button" (click)="increaseQuantity(product)">+</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
