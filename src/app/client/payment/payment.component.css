@@ -1,152 +1,188 @@
-/* General container styling */
-.container {
-  padding: 0; /* Remove padding if needed */
-  margin-top: 50px;
-}
-
-/* Style the card */
-.card {
-  border-radius: 0; /* Remove border radius */
-  background-color: transparent; /* Remove background color */
-  border: 1px solid #e9ecef; /* Optional: Light border for visibility */
-  width: 50%; /* Default width for larger screens */
-  max-width: 800px; /* Optional: Set a maximum width for large screens */
-  margin: 0 auto; /* Center the card */
-}
-
-/* Style the card body */
-.card-body {
-  padding: 0; /* Remove padding to ensure full-width sections */
-  background: linear-gradient(to right, #ea4f28, #ad8186); /* Background gradient */
+/* Checkout Container */
+.checkout-container {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f3f4f6;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Ensure the card body fills the container and adjust layout */
-.card-body > div {
+/* Card */
+.checkout-card {
   display: flex;
-  flex-direction: column;
-  width: 100%; /* Full width */
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
-/* Style headers */
-h1, .card-title {
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  color: #333;
-  margin: 0; /* Remove margin for alignment */
+/* Left and Right Panels */
+.checkout-left, .checkout-right {
+  flex: 1 1 400px;
+  padding: 30px;
 }
 
-/* Style form labels */
-.form-label {
+/* Titles */
+.checkout-title {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #555;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ff6b6b;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
-/* Style form check inputs and labels */
-.form-check-input {
-  margin-right: 10px;
+/* Order Summary */
+.summary-card {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-.form-check-label {
+.summary-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding-top: 15px;
+  font-size: 1.2rem;
+}
+
+/* Payment Form */
+.payment-form label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.payment-form input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255,107,107,0.3);
+}
+
+/* Payment Methods */
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.payment-option input {
+  margin-right: 8px;
+}
+
+.option-label {
   font-weight: 500;
 }
 
-/* Style the order summary */
-.order-summary {
-  width: 100%; /* Full width */
-  padding: 1.5rem; /* Adjust padding as needed */
-  background: #f8f9fa; /* Gray background */
-  box-sizing: border-box; /* Include padding in width */
-  margin-bottom: 0; /* No gap between sections */
-}
-
-/* Style the payment details */
-.payment-details {
-  width: 100%; /* Full width */
-  padding: 1.5rem; /* Adjust padding as needed */
-  background: #fff; /* White background */
-  box-sizing: border-box; /* Include padding in width */
-  margin-bottom: 0; /* No gap between sections */
-}
-
-/* Style payment details sections */
-.credit-card-details, .paypal-details, .net-banking-details, .upi-details {
-  border: 1px solid #ddd;
-  border-radius: 0; /* Remove border radius */
-  padding: 1rem;
+/* Payment Sections */
+.payment-section {
   background: #fff;
-  margin-bottom: 0; /* No gap between sections */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Different styles for each payment method */
-.credit-card-details {
-  background: linear-gradient(to right, #4a90e2, #0056b3);
-  color: #fff;
+.payment-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-.paypal-details {
-  background: linear-gradient(to right, #ffb900, #f17c07);
-  color: #fff;
-}
+/* Gradients */
+.credit-card { background: linear-gradient(to right, #4a90e2, #0056b3); color: #fff; }
+.paypal { background: linear-gradient(to right, #ffc107, #ff9800); color: #fff; }
+.netbanking { background: linear-gradient(to right, #009688, #00796b); color: #fff; }
+.upi { background: linear-gradient(to right, #e53935, #b71c1c); color: #fff; }
 
-.net-banking-details {
-  background: linear-gradient(to right, #009688, #004d40);
-  color: #fff;
-}
-
-.upi-details {
-  background: linear-gradient(to right, #d9534f, #ada3a4);
-  color: #fff;
-}
-
-/* Style UPI options */
+/* UPI Options */
 .upi-options {
   display: flex;
-  justify-content: space-around; /* Space items evenly */
-  align-items: center; /* Center items vertically */
-  gap: 1rem; /* Space between items */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.upi-option {
-  text-align: center;
-  flex: 1; /* Make each option flexible */
+.upi-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none; /* Remove underline from links */
-  color: #fff; /* Text color */
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.upi-option:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.upi-icon, .upi-logo {
-  width: 60px; /* Set consistent size */
-  height: 60px; /* Maintain aspect ratio */
-  margin-bottom: 10px;
-}
-
-.upi-option span {
-  font-size: 1rem;
-}
-
-/* Button styles */
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  transition: 0.3s;
   border-radius: 8px;
-  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .card {
-    width: 90%; /* Full width on small screens */
-    max-width: none; /* Remove max-width constraint */
-  }
+.upi-link img, .upi-link i {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.upi-link span { font-size: 0.9rem; }
+
+/* Hover effect */
+.upi-link:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+/* Pay Button */
+.btn-pay {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to right, #ff6b6b, #ff4757);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-pay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .checkout-card { flex-direction: column; }
+  .checkout-left, .checkout-right { flex: 1 1 100%; }
 }

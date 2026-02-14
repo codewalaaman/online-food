@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
             this.global.isLoggedIn = true; // Update global service state
             this.router.navigate(['home']);
             this.cartService.fetchCartItems(response._id);
-            this.getOrderList();
+            this.global.getOrderList()
             this.getUserReservations();
 
           } 

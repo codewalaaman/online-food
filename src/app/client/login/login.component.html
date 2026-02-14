@@ -1,98 +1,96 @@
-<div class="auth-background justify-content-start">
+<div class="auth-background d-flex align-items-center justify-content-center">
 	<div class="container">
-	  <div class="row mt-5 justify-content-evenly">
+	  <div class="row justify-content-center">
+  
 		<!-- Login Column -->
-		<div class="col-sm-4 m-4 login-container " *ngIf="!isSignupMode">
-		  <div class="row text-center">
-			<div class="col-sm-12 mb-1">
-			  <h2>Login! 👋</h2>
-			  <p>How do I get started?</p>    
-			</div>  
+		<div class="col-12 col-md-6 col-lg-4 auth-card" *ngIf="!isSignupMode">
+		  <div class="text-center mb-4">
+			<h2>Login! 👋</h2>
+			<p>How do I get started?</p>
 		  </div>
-		  <div class="row">
-			<div class="container mt-5">
-			  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-				<!-- Login Form Fields -->
-				<div class="mb-3">
-				  <label for="email" class="form-label">Email address</label>
-				  <input type="email" id="email" formControlName="email" class="form-control" placeholder="name@example.com">
-				  <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="text-danger">
-					<div *ngIf="loginForm.get('email')?.errors?.required">Email is required.</div>
-					<div *ngIf="loginForm.get('email')?.errors?.email">Invalid email format.</div>
-				  </div>
-				</div>
-				<div class="mb-3">
-				  <label for="password" class="form-label">Password</label>
-				  <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
-				  <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-danger">
-					<div *ngIf="loginForm.get('password')?.errors?.required">Password is required.</div>
-				  </div>
-				</div>
-				<div class="d-flex flex-column align-items-center">
-				  <button type="submit" class="btn btn-login rounded-6 w-100">Login</button>
-				</div>
-				<div class="d-flex flex-column align-items-center mt-3">
-				  <button type="button" class="btn btn-google rounded-6 w-100">
-					<i class="fab fa-google me-2"></i> Sign in with Google
-				  </button>
-				</div>
-			  </form>
-			  <p class="mt-3">Don't have an account? <a href="#" (click)="toggleForm(); $event.preventDefault();">Sign Up Now</a></p>
+  
+		  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+			<div class="mb-3">
+			  <label for="email" class="form-label">Email address</label>
+			  <input type="email" id="email" formControlName="email" class="form-control" placeholder="name@example.com">
+			  <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="loginForm.get('email')?.errors?.required">Email is required.</div>
+				<div *ngIf="loginForm.get('email')?.errors?.email">Invalid email format.</div>
+			  </div>
 			</div>
-		  </div>
+  
+			<div class="mb-3">
+			  <label for="password" class="form-label">Password</label>
+			  <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+			  <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="loginForm.get('password')?.errors?.required">Password is required.</div>
+			  </div>
+			</div>
+  
+			<button type="submit" class="btn btn-login w-100 mb-3">Login</button>
+  
+			<button type="button" class="btn btn-google w-100 mb-2">
+			  <i class="fab fa-google me-2"></i> Sign in with Google
+			</button>
+  
+			<p class="text-center mt-3 small">
+			  Don't have an account?
+			  <a href="#" (click)="toggleForm(); $event.preventDefault()">Sign Up Now</a>
+			</p>
+		  </form>
 		</div>
   
 		<!-- Sign Up Column -->
-		<div class="col-sm-4 m-4 login-container " *ngIf="isSignupMode">
-		  <div class="row text-center">
-			<div class="col-sm-12 mb-1">
-			  <h2>Sign Up! 🎉</h2>
-			  <p>Join us today!</p>
-			</div>
+		<div class="col-12 col-md-6 col-lg-4 auth-card" *ngIf="isSignupMode">
+		  <div class="text-center mb-4">
+			<h2>Sign Up! 🎉</h2>
+			<p>Join us today!</p>
 		  </div>
-		  <div class="row">
-			<div class="container mt-5">
-			  <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="w-100">
-				<!-- Sign Up Form Fields -->
-				<div class="mb-3">
-					<label for="name" class="form-label">Name </label>
-					<input type="text" id="name" formControlName="name" class="form-control" placeholder="entername">
-					<div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)" class="text-danger">
-					  <div *ngIf="signupForm.get('name')?.errors?.required">name is required.</div>
-					  <div></div>
-					</div>
-				  </div>
-				<div class="mb-3">
-				  <label for="email" class="form-label">Email address</label>
-				  <input type="email" id="email" formControlName="email" class="form-control" placeholder="name@example.com">
-				  <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" class="text-danger">
-					<div *ngIf="signupForm.get('email')?.errors?.required">Email is required.</div>
-					<div *ngIf="signupForm.get('email')?.errors?.email">Invalid email format.</div>
-				  </div>
-				</div>
-				<div class="mb-3">
-				  <label for="password" class="form-label">Password</label>
-				  <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
-				  <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" class="text-danger">
-					<div *ngIf="signupForm.get('password')?.errors?.required">Password is required.</div>
-				  </div>
-				</div>
-				<div class="mb-3">
-				  <label for="confirmPassword" class="form-label">Confirm Password</label>
-				  <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password">
-				  <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)" class="text-danger">
-					<div *ngIf="signupForm.get('confirmPassword')?.errors?.required">Confirm Password is required.</div>
-					<div *ngIf="signupForm.get('confirmPassword')?.errors?.mismatch">Passwords do not match.</div>
-				  </div>
-				</div>
-				<div class="d-flex flex-column align-items-center">
-				  <button type="submit" class="btn btn-signup rounded-6 w-100">Sign Up</button>
-				</div>
-			  </form>
-			  <p class="mt-3">Already have an account? <a href="#" (click)="toggleForm(); $event.preventDefault();">Log In</a></p>
+  
+		  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+			<div class="mb-3">
+			  <label for="name" class="form-label">Name</label>
+			  <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name">
+			  <div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="signupForm.get('name')?.errors?.required">Name is required.</div>
+			  </div>
 			</div>
-		  </div>
+  
+			<div class="mb-3">
+			  <label for="email" class="form-label">Email address</label>
+			  <input type="email" id="email" formControlName="email" class="form-control" placeholder="name@example.com">
+			  <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="signupForm.get('email')?.errors?.required">Email is required.</div>
+				<div *ngIf="signupForm.get('email')?.errors?.email">Invalid email format.</div>
+			  </div>
+			</div>
+  
+			<div class="mb-3">
+			  <label for="password" class="form-label">Password</label>
+			  <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+			  <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="signupForm.get('password')?.errors?.required">Password is required.</div>
+			  </div>
+			</div>
+  
+			<div class="mb-3">
+			  <label for="confirmPassword" class="form-label">Confirm Password</label>
+			  <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password">
+			  <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)" class="text-danger small mt-1">
+				<div *ngIf="signupForm.get('confirmPassword')?.errors?.required">Confirm Password is required.</div>
+				<div *ngIf="signupForm.get('confirmPassword')?.errors?.mismatch">Passwords do not match.</div>
+			  </div>
+			</div>
+  
+			<button type="submit" class="btn btn-signup w-100">Sign Up</button>
+  
+			<p class="text-center mt-3 small">
+			  Already have an account?
+			  <a href="#" (click)="toggleForm(); $event.preventDefault()">Log In</a>
+			</p>
+		  </form>
 		</div>
+  
 	  </div>
 	</div>
   </div>

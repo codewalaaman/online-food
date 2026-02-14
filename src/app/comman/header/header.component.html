@@ -178,18 +178,42 @@
     </div>
 
     <!-- Order History and Notifications -->
-    <div class="text-center mt-3">
-      <a class="btn btn-outline-primary w-100 mb-2" (click)="showorderHistory()"
-        >Order History
-      </a>
-      <div *ngIf="this.global.showorderHistory">
-        <ul *ngFor="let items of this.global.orderList">
-          <li>Order Id : {{ items._id }}</li>
+    <div class="dashboard-actions">
+
+      <!-- Order History Button -->
+      <div class="action-card" (click)="showorderHistory()">
+        <div class="action-icon">
+          <i class="fas fa-history"></i>
+        </div>
+        <div class="action-text">
+          <h5>Order History</h5>
+          <p>View all your previous orders</p>
+        </div>
+      </div>
+    
+      <!-- Order List (Expandable) -->
+      <div *ngIf="this.global.showorderHistory" class="order-list-card">
+        <ul class="order-list">
+          <li *ngFor="let items of this.global.orderList">
+            <span>Order ID: <strong>{{ items._id }}</strong></span>
+            <span class="status">Delivered</span>
+          </li>
         </ul>
       </div>
-      <a class="btn btn-outline-secondary w-100 mb-2">Notifications</a>
-      <!-- <a class="btn btn-outline-secondary w-100 mb-2 " data-bs-toggle="reservation" aria-controls="reservationLabel" >Reserved List</a> -->
+    
+      <!-- Notifications Button -->
+      <div class="action-card notification-card">
+        <div class="action-icon">
+          <i class="fas fa-bell"></i>
+        </div>
+        <div class="action-text">
+          <h5>Notifications</h5>
+          <p>Check your latest updates</p>
+        </div>
+      </div>
+    
     </div>
+    
 
     <!-- Actions -->
     <hr />

@@ -100,6 +100,8 @@ paymentSubmit(): void {
         this.cartService.fetchCartItems(this.global.userId);
         // this.clearCart(); // Clear cart after successful order
         this.router.navigate(['/home']);
+        this.global.getOrderList()
+
       },
       (error) => {
         console.error('Error confirming order:', error);

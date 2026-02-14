@@ -1,89 +1,153 @@
-<div class="container mt-5 mb-4">
-  <h1 class="text-center mb-4">Customer Support</h1>
-  <div class="row d-flex">
-      <!-- Left Side: Contact Information -->
-      <div class="col col-md-6 contact-info">
-          <h3>Contact Us</h3>
-          <div class="info-item">
-              <i class="fas fa-location-dot"></i>
-              <div>
-                  <span>Address:</span>
-                  <h4>Gurugram, Haryana</h4>
-              </div>
-          </div>
-          <div class="info-item">
-              <i class="fas fa-phone"></i>
-              <div>
-                  <span>Phone:</span>
-                  <h4>+91 **********</h4>
-              </div>
-          </div>
-          <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <div>
-                  <span>Email:</span>
-                  <h4>amanrpawar1210@gmail.com</h4>
-              </div>
-          </div>
-          <div class="info-item">
-              <i class="fas fa-clock"></i>
-              <div>
-                  <span>Hours:</span>
-                  <h4>Mon-Sun: 9 AM - 9 PM</h4>
-              </div>
-          </div>
+<div class="support-wrapper py-5">
+    <div class="container">
+  
+      <!-- Page Header -->
+      <div class="text-center mb-5">
+        <h1 class="fw-bold display-6">Customer Support</h1>
+        <p class="text-muted">We're here to help you 24/7</p>
       </div>
-
-      <!-- Right Side: Contact Form -->
-      <div class="col-md-6">
-          <h3 class="mt-2 mb-2">Get In Touch</h3>
-          <form (ngSubmit)="submitContact()">
-              <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" [(ngModel)]="contactForm.name" name="name" required>
+  
+      <div class="row g-4">
+  
+        <!-- LEFT SIDE - CONTACT INFO -->
+        <div class="col-lg-5">
+          <div class="card support-card h-100 shadow-sm border-0">
+            <div class="card-body p-4">
+  
+              <h4 class="mb-4 fw-semibold">Contact Information</h4>
+  
+              <div class="contact-item d-flex mb-4">
+                <div class="icon-box me-3">
+                  <i class="fas fa-location-dot"></i>
+                </div>
+                <div>
+                  <small class="text-muted">Address</small>
+                  <p class="mb-0 fw-medium">Gurugram, Haryana</p>
+                </div>
               </div>
-              <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" [(ngModel)]="contactForm.email" name="email" required>
+  
+              <div class="contact-item d-flex mb-4">
+                <div class="icon-box me-3">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <small class="text-muted">Phone</small>
+                  <p class="mb-0 fw-medium">+91 **********</p>
+                </div>
               </div>
-              <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea class="form-control" id="message" rows="4" [(ngModel)]="contactForm.message" name="message" required></textarea>
+  
+              <div class="contact-item d-flex mb-4">
+                <div class="icon-box me-3">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <small class="text-muted">Email</small>
+                  <p class="mb-0 fw-medium">amanrpawar1210@gmail.com</p>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
+  
+              <div class="contact-item d-flex">
+                <div class="icon-box me-3">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <small class="text-muted">Working Hours</small>
+                  <p class="mb-0 fw-medium">Mon - Sun | 9 AM - 9 PM</p>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+  
+        <!-- RIGHT SIDE - CONTACT FORM -->
+        <div class="col-lg-7">
+          <div class="card support-card shadow-sm border-0">
+            <div class="card-body p-4">
+  
+              <h4 class="mb-4 fw-semibold">Send us a Message</h4>
+  
+              <form #form="ngForm" (ngSubmit)="submitContact()">
+  
+                <div class="form-floating mb-3">
+                  <input type="text"
+                         class="form-control"
+                         id="name"
+                         name="name"
+                         [(ngModel)]="contactForm.name"
+                         required
+                         #name="ngModel">
+                  <label for="name">Full Name</label>
+                </div>
+  
+                <div class="form-floating mb-3">
+                  <input type="email"
+                         class="form-control"
+                         id="email"
+                         name="email"
+                         [(ngModel)]="contactForm.email"
+                         required
+                         email
+                         #email="ngModel">
+                  <label for="email">Email Address</label>
+                </div>
+  
+                <div class="form-floating mb-4">
+                  <textarea class="form-control"
+                            id="message"
+                            name="message"
+                            style="height: 120px"
+                            [(ngModel)]="contactForm.message"
+                            required
+                            #message="ngModel"></textarea>
+                  <label for="message">Your Message</label>
+                </div>
+  
+                <button type="submit"
+                        class="btn btn-primary w-100 py-2"
+                        [disabled]="form.invalid">
+                  Send Message
+                </button>
+  
+              </form>
+  
+            </div>
+          </div>
+        </div>
       </div>
+  
+      <!-- FAQ SECTION -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h3 class="text-center mb-4 fw-semibold">Frequently Asked Questions</h3>
+  
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item"
+                 *ngFor="let faq of faqs; let i = index">
+  
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#faq' + i">
+                  {{ faq.question }}
+                </button>
+              </h2>
+  
+              <div [id]="'faq' + i"
+                   class="accordion-collapse collapse"
+                   data-bs-parent="#faqAccordion">
+  
+                <div class="accordion-body">
+                  {{ faq.answer }}
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
   </div>
-
-  <!-- Additional Content Section -->
-  <div class="row mt-5">
-      <div class="col-md-12">
-          <h2 class="text-center">Frequently Asked Questions (FAQs)</h2>
-          <div class="faq-item" *ngFor="let faq of faqs; let i = index">
-              <h5>
-                  <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#faq' + i" aria-expanded="false" aria-controls="faq">
-                      {{ faq.question }}
-                  </button>
-              </h5>
-              <div class="collapse" [attr.id]="'faq' + i">
-                  <div class="card card-body">
-                      {{ faq.answer }}
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <!-- Social Media Links -->
-  <!-- <div class="row mt-5 text-center">
-      <div class="col-md-12">
-          <h2>Follow Us</h2>
-          <div class="social-icons">
-              <a href="#" class="mx-3"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="mx-3"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="mx-3"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-      </div>
-  </div> -->
-</div>
+  

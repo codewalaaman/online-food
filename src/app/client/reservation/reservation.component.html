@@ -123,12 +123,16 @@
     </div>
   </div> -->
 
-  <div class="container-fluid ">
-    <!-- Search Bar -->
-    <div class="row mb-4">
-      <div class="col-md-12 mt-3">
-        <div class="input-group">
-          <select class="form-control col-md-2" [(ngModel)]="selectedCity" (change)="filterRestaurants()">
+  <div class="container-fluid py-4">
+    <!-- Search & City Selector -->
+    <div class="row mb-4 justify-content-center">
+      <div class="col-md-10">
+        <div class="input-group search-wrapper shadow-sm rounded-pill overflow-hidden">
+          <select
+            class="form-select city-select"
+            [(ngModel)]="selectedCity"
+            (change)="filterRestaurants()"
+          >
             <option value="">Select City</option>
             <option value="Delhi">Delhi</option>
             <option value="Mumbai">Mumbai</option>
@@ -136,68 +140,66 @@
           </select>
           <input
             type="text"
-            class="form-control"
+            class="form-control search-input"
             [(ngModel)]="searchQuery"
             placeholder="Search for Restaurants, Offers, Deals or Events..."
             (input)="filterRestaurants()"
           />
-          <div class="input-group-append">
-            <button class="btn btn-danger" type="button" (click)="filterRestaurants()">Search</button>
-          </div>
+          <button class="btn btn-danger search-btn" type="button" (click)="filterRestaurants()">
+            Search
+          </button>
         </div>
       </div>
     </div>
-    
-    
   
-    <!-- Main Content -->
     <div class="row">
-      <!-- Filters Section -->
-      <div class="col-md-3">
-        <!-- Quick Filters -->
-        <h5>Quick Filters</h5>
-        <ul class="list-group mb-3">
-          <li class="list-group-item">
-            <input type="checkbox" [(ngModel)]="filterOptions.dineoutPay" (change)="filterRestaurants()" /> Dineout Pay
-          </li>
-          <li class="list-group-item">
-            <input type="checkbox" [(ngModel)]="filterOptions.pureVeg" (change)="filterRestaurants()" /> Pure Veg
-          </li>
-          <li class="list-group-item">
-            <input type="checkbox" [(ngModel)]="filterOptions.fiveStar" (change)="filterRestaurants()" /> 5 Star
-          </li>
-          <li class="list-group-item">
-            <input type="checkbox" [(ngModel)]="filterOptions.buffet" (change)="filterRestaurants()" /> Buffet
-          </li>
-        </ul>
+      <!-- Filters Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="filters shadow-sm rounded p-3 bg-white">
+          <h5 class="mb-3">Quick Filters</h5>
+          <ul class="list-group mb-3">
+            <li class="list-group-item">
+              <input type="checkbox" [(ngModel)]="filterOptions.dineoutPay" (change)="filterRestaurants()" /> Dineout Pay
+            </li>
+            <li class="list-group-item">
+              <input type="checkbox" [(ngModel)]="filterOptions.pureVeg" (change)="filterRestaurants()" /> Pure Veg
+            </li>
+            <li class="list-group-item">
+              <input type="checkbox" [(ngModel)]="filterOptions.fiveStar" (change)="filterRestaurants()" /> 5 Star
+            </li>
+            <li class="list-group-item">
+              <input type="checkbox" [(ngModel)]="filterOptions.buffet" (change)="filterRestaurants()" /> Buffet
+            </li>
+          </ul>
   
-        <!-- Cuisines -->
-        <h5>Cuisines</h5>
-        <ul class="list-group">
-          <li class="list-group-item">North Indian</li>
-          <li class="list-group-item">Fast Food</li>
-          <li class="list-group-item">Chinese</li>
-          <li class="list-group-item">Beverages</li>
-        </ul>
+          <h5 class="mb-3">Cuisines</h5>
+          <ul class="list-group">
+            <li class="list-group-item">North Indian</li>
+            <li class="list-group-item">Fast Food</li>
+            <li class="list-group-item">Chinese</li>
+            <li class="list-group-item">Beverages</li>
+          </ul>
+        </div>
       </div>
   
-      <!-- Restaurant Cards Section -->
-      <div class="col-md-9">
-        <h4>Best Restaurants Near Me in {{ selectedCity || 'your area' }}</h4>
+      <!-- Restaurant Cards -->
+      <div class="col-lg-9">
+        <h4 class="mb-4">Best Restaurants Near Me in {{ selectedCity || 'your area' }}</h4>
         <div class="row">
-          <div class="col-md-4 mb-4" *ngFor="let restaurant of filteredRestaurants">
-            <div class="card">
+          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let restaurant of filteredRestaurants">
+            <div class="card restaurant-card shadow-sm">
               <img class="card-img-top" [src]="restaurant.image" (click)="onImageClick(restaurant)" alt="Restaurant image">
               <div class="card-body">
                 <h5 class="card-title">{{ restaurant.name }}</h5>
-                <p class="card-text">{{ restaurant.location }}</p>
-                <p class="card-text">{{ restaurant.price }} for 2</p>
+                <p class="card-text text-muted">{{ restaurant.location }}</p>
+                <p class="card-text text-muted">{{ restaurant.price }} for 2</p>
                 <span class="badge badge-success">{{ restaurant.rating }}</span>
               </div>
             </div>
           </div>
         </div>
-        <div *ngIf="filteredRestaurants.length === 0" class="alert alert-info">
+  
+        <div *ngIf="filteredRestaurants.length === 0" class="alert alert-info text-center">
           No restaurants found for the applied filters.
         </div>
       </div>

@@ -1,81 +1,72 @@
-<div class="container mt-5 mb-3" style="min-height: 100vh;">
-  <!-- <h1 class="text-center mb-4">Food Menu</h1> -->
-  <div class="text-center mb-4">
-    <button class="btn btn-outline-primary filter-btn" (click)="filterItems('all')">All</button>
-    <button class="btn btn-outline-success filter-btn" (click)="filterItems('veg')">Veg</button>
-    <button class="btn btn-outline-danger filter-btn" (click)="filterItems('non-veg')">Non-Veg</button>
+<div class="container mt-5 mb-3 min-vh-100">
 
-    <!-- Add Product button for admin only -->
-    <button type="button" *ngIf="this.global.adminLogin" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addProductModal" style="background-color: rgba(229, 86, 14, 0.918) !important; color:white;">
-      Add new product +
+  <!-- Filters & Add Product -->
+  <div class="text-center mb-4 d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="filter-buttons">
+      <button class="btn btn-outline-primary filter-btn" (click)="filterItems('all')">All</button>
+      <button class="btn btn-outline-success filter-btn" (click)="filterItems('veg')">Veg</button>
+      <button class="btn btn-outline-danger filter-btn" (click)="filterItems('non-veg')">Non-Veg</button>
+    </div>
+
+    <!-- Admin Add Product -->
+    <button type="button" *ngIf="this.global.adminLogin" class="btn btn-primary add-product-btn"
+      data-bs-toggle="modal" data-bs-target="#addProductModal">
+      Add New Product +
     </button>
   </div>
 
-  <div class="row mb-4 d-flex justify-content-center "  *ngIf="this.global.adminLogin">
-    <div class="col-auto">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" id="sortByDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        Sort By
-      </button>
-      <ul class="dropdown dropdown-menu" aria-labelledby="sortByDropdown">
-        <li><a class="dropdown-item" (click)="applySort('relevance')">Relevance (Default)</a></li>
-        <li><a class="dropdown-item" (click)="applySort('deliveryTime')">Delivery Time</a></li>
-        <li><a class="dropdown-item" (click)="applySort('rating')">Rating</a></li>
-        <li><a class="dropdown-item" (click)="applySort('costLowToHigh')">Cost: Low to High</a></li>
-        <li><a class="dropdown-item" (click)="applySort('costHighToLow')">Cost: High to Low</a></li>
-      </ul>    </div>
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('fastDelivery')">Fast Delivery</button>
+  <!-- Admin Filters & Sorting -->
+  <div class="row mb-4 d-flex justify-content-center flex-wrap filter-row">
+    <!-- Sort Dropdown -->
+    <div class="col-auto mb-2 flex-grow-1 flex-sm-grow-0">
+      <div class="dropdown w-100">
+        <button class="btn btn-outline-primary dropdown-toggle w-100" type="button" id="sortByDropdown"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Sort By
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="sortByDropdown">
+          <li><a class="dropdown-item" (click)="applySort('relevance')">Relevance (Default)</a></li>
+          <li><a class="dropdown-item" (click)="applySort('deliveryTime')">Delivery Time</a></li>
+          <li><a class="dropdown-item" (click)="applySort('rating')">Rating</a></li>
+          <li><a class="dropdown-item" (click)="applySort('costLowToHigh')">Cost: Low to High</a></li>
+          <li><a class="dropdown-item" (click)="applySort('costHighToLow')">Cost: High to Low</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('newOnSwiggy')">New on Swiggy</button>
-    </div>
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('ratings')">Ratings 4.0+</button>
-    </div>
-    <!-- <div class="col-auto">
-      <button class="btn btn-outline-primary" (click)="applyFilter('pureVeg')">Pure Veg</button>
-    </div> -->
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('offers')">Offers</button>
-    </div>
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('300to600')">Rs. 300 - Rs. 600</button>
-    </div>
-    <div class="col-auto mb-2">
-      <button class="btn btn-outline-primary" (click)="applyFilter('lessThan300')">Less than Rs. 300</button>
-    </div>
+  
+    <!-- Filter Buttons -->
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('fastDelivery')">Fast Delivery</button></div>
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('newOnSwiggy')">New on Swiggy</button></div>
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('ratings')">Ratings 4.0+</button></div>
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('offers')">Offers</button></div>
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('300to600')">Rs. 300 - Rs. 600</button></div>
+    <div class="col-6 col-sm-auto mb-2"><button class="btn btn-outline-primary w-100" (click)="applyFilter('lessThan300')">Less than Rs. 300</button></div>
   </div>
   
-  <!-- Product Cards -->
-  <div class="row " style="flex-wrap: wrap;">
-    <div class=" col-6 col-md-4 col-sm-6 col-lg-3  col-6 col-xl-3 mb-3" *ngFor="let item of filteredItems">
-      <div class="food-card position-relative ">
-        <!-- Dropdown for Admin Actions -->
-        <!-- Dropdown for Admin Actions -->
 
-        <img [src]="item.productImageUrl" alt="Food Item">
-        <!-- <div *ngIf="this.global.adminLogin" class="dropdown position-relative float-end top-0 end-0">
-          <button class="btn btn-sm btn-light" (click)="toggleDropdown(item.productId)">
-              <i class="fas fa-ellipsis-vertical"></i>
-             </button>
-           <ul class="dropdown-menu" *ngIf="isDropdownOpen(item.productId)">
-              <li><a class="dropdown-item" (click)="openEditModal(item)" data-bs-toggle="modal" data-bs-target="#editProductModal">Edit</a></li>
-              <li><a class="dropdown-item text-danger" (click)="deleteProduct(item.productId)">Delete</a></li>
-          </ul>
-         </div> -->
-        <div class="food-card-body">
-          <h5 class="card-title mb-3">{{ item.productName }}</h5>
-          <p class="card-text">{{ item.productDescription }}</p>
-          <p class="card-price">₹{{ item.productPrice }}</p>
-          <div class="card-button ">
-            <button class="btn-add-to-cart" (click)="addToCart(item)">Add to Cart</button>
-            <span *ngIf="getQuantity(item.productId) > 0" class="quantity-controls lg-ms-3">
-              <button class="btn btn-sm btn-outline-secondary" (click)="decreaseQuantity(item.productId)">-</button>
-              <span class="mx-2">{{ getQuantity(item.productId) }}</span>
-              <button class="btn btn-sm btn-outline-secondary" (click)="increaseQuantity(item.productId)">+</button>
-            </span>
+  <!-- Product Cards -->
+  <div class="row g-3">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of filteredItems">
+      <div class="food-card h-100 d-flex flex-column">
+        <img [src]="item.productImageUrl" alt="{{item.productName}}" class="food-img">
+
+        <div class="food-card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title">{{ item.productName }}</h5>
+            <p class="card-text">{{ item.productDescription }}</p>
           </div>
-         
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <p class="card-price mb-0">₹{{ item.productPrice }}</p>
+            <div class="card-button d-flex align-items-center gap-2">
+              <button class="btn-add-to-cart" (click)="addToCart(item)">Add to Cart</button>
+              <span *ngIf="getQuantity(item.productId) > 0" class="quantity-controls d-flex align-items-center gap-1">
+                <button class="btn btn-sm btn-outline-secondary" (click)="decreaseQuantity(item.productId)">-</button>
+                <span>{{ getQuantity(item.productId) }}</span>
+                <button class="btn btn-sm btn-outline-secondary" (click)="increaseQuantity(item.productId)">+</button>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -83,43 +74,44 @@
 
   <!-- Add Product Modal -->
   <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="addProductModalLabel">Add New Food Item</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="addNewProductForm" (ngSubmit)="addNewProduct()">
-            <!-- Form fields for adding a product (Image, Name, Type, Price, Description) -->
-            <div class="mb-3">
-              <label for="image" class="form-label">Image</label>
-              <input type="file" id="image" class="form-control" (change)="onImageChange($event)" formControlName="productImageUrl">
+          <form [formGroup]="addNewProductForm" (ngSubmit)="addNewProduct()" class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Image</label>
+              <input type="file" class="form-control" (change)="onImageChange($event)" formControlName="productImageUrl">
             </div>
-            <div class="mb-3">
-              <label for="name" class="form-label">Product Name</label>
-              <input type="text" id="name" class="form-control" formControlName="productName">
+            <div class="col-md-6">
+              <label class="form-label">Product Name</label>
+              <input type="text" class="form-control" formControlName="productName">
             </div>
-            <div class="mb-3">
-              <label for="id" class="form-label">Product Id</label>
-              <input type="text" id="id" class="form-control" formControlName="productId">
+            <div class="col-md-6">
+              <label class="form-label">Product Id</label>
+              <input type="text" class="form-control" formControlName="productId">
             </div>
-            <div class="mb-3">
-              <label for="productType" class="form-label">Type</label>
-              <select id="productType" class="form-select" formControlName="productType">
+            <div class="col-md-6">
+              <label class="form-label">Type</label>
+              <select class="form-select" formControlName="productType">
                 <option value="veg">Veg</option>
                 <option value="non-veg">Non-Veg</option>
               </select>
             </div>
-            <div class="mb-3">
-              <label for="price" class="form-label">Price</label>
-              <input type="text" id="price" class="form-control" formControlName="productPrice">
+            <div class="col-md-6">
+              <label class="form-label">Price</label>
+              <input type="text" class="form-control" formControlName="productPrice">
             </div>
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea id="description" class="form-control" formControlName="productDescription"></textarea>
+            <div class="col-12">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" formControlName="productDescription"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="addNewProductForm.invalid">Add Product</button>
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary" [disabled]="addNewProductForm.invalid">Add Product</button>
+            </div>
           </form>
         </div>
       </div>
@@ -128,42 +120,44 @@
 
   <!-- Edit Product Modal -->
   <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="editProductModalLabel">Edit Food Item</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="editProductForm" (ngSubmit)="updateProduct()">
-            <!-- Form fields for editing a product -->
-            <div class="mb-3">
-              <label for="editImage" class="form-label">Image</label>
-              <input type="file" id="editImage" class="form-control" (change)="onImageChange($event)" formControlName="productImageUrl">
+          <form [formGroup]="editProductForm" (ngSubmit)="updateProduct()" class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Image</label>
+              <input type="file" class="form-control" (change)="onImageChange($event)" formControlName="productImageUrl">
             </div>
-            <div class="mb-3">
-              <label for="editName" class="form-label">Product Name</label>
-              <input type="text" id="editName" class="form-control" formControlName="productName">
+            <div class="col-md-6">
+              <label class="form-label">Product Name</label>
+              <input type="text" class="form-control" formControlName="productName">
             </div>
-            <div class="mb-3">
-              <label for="editProductType" class="form-label">Type</label>
-              <select id="editProductType" class="form-select" formControlName="productType">
+            <div class="col-md-6">
+              <label class="form-label">Type</label>
+              <select class="form-select" formControlName="productType">
                 <option value="veg">Veg</option>
                 <option value="non-veg">Non-Veg</option>
               </select>
             </div>
-            <div class="mb-3">
-              <label for="editPrice" class="form-label">Price</label>
-              <input type="text" id="editPrice" class="form-control" formControlName="productPrice">
+            <div class="col-md-6">
+              <label class="form-label">Price</label>
+              <input type="text" class="form-control" formControlName="productPrice">
             </div>
-            <div class="mb-3">
-              <label for="editDescription" class="form-label">Description</label>
-              <textarea id="editDescription" class="form-control" formControlName="productDescription"></textarea>
+            <div class="col-12">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" formControlName="productDescription"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="editProductForm.invalid">Update Product</button>
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary" [disabled]="editProductForm.invalid">Update Product</button>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
 </div>

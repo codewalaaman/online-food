@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,21 @@ export class GlobalService {
   showorderHistory:boolean=false
 
 
-  constructor() { }
+  constructor( private apiService:ApiService) { }
+
+  getOrderList(){
+
+    this.apiService.getOrdersByUserId(this.userId).subscribe(
+      data => {
+        this.orderList = data.orders;
+        // this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error confirming order:', error);
+        // this.isLoading = false;
+      }
+    );
+  
+}
 
 }
